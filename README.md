@@ -1,5 +1,10 @@
 # HCI-Hw4-BackgroundSubtraction
 
+## Build
+```
+make
+```
+
 ## Env
 
 required: 
