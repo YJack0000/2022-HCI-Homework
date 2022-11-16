@@ -1,5 +1,11 @@
 # HCI-Hw4-BackgroundSubtraction
 
+## Demo
+![](demo.gif)
+
+## Background Subtraction
+利用擷取畫面中的按鈕（red block）範圍內的的 Substraction 來達成偵測是否有接觸到按鈕，並且動態調整藍色方塊數量（blue block）。
+
 ## Build
 ```
 make
@@ -14,5 +20,3 @@ required:
 tested on:
 * macos monterey 12.5 (arm)
 
-## Demo
-![](demo.gif)
