@@ -3,7 +3,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 
-#define MOVEMENT_THRESHOLD 30
+#define MOVEMENT_THRESHOLD 50
 
 using namespace std;
 
@@ -79,6 +79,7 @@ int main(int argc, char *argv[])
 
 	capture.open(1);
 	cv::namedWindow("Webcam", cv::WindowFlags::WINDOW_AUTOSIZE);
+	cv::namedWindow("FrameDiff", cv::WindowFlags::WINDOW_AUTOSIZE);
 
 	while(true)
 	{
@@ -102,9 +103,11 @@ int main(int argc, char *argv[])
 			bkframe.copyTo(reference_frame);
 
 			diff = cv::Mat(frame.size().width, frame.size().height, frame.depth(), 1);
-		} else {
-			first = true;
-		}
+		} 
+		
+		// else {
+		// 	first = true;
+		// }
 		
 		cv::cvtColor(frame, bkframe, cv::COLOR_BGR2GRAY);
 		cv::absdiff(bkframe, reference_frame, diff);
@@ -117,7 +120,7 @@ int main(int argc, char *argv[])
 
 
 		cv::imshow("Webcam", frame);
-		// cv::imshow("FrameDifference", diff);
+		cv::imshow("FrameDiff", diff);
 
 		if(cv::waitKey(1) == 'q')
 			break;
@@ -126,7 +129,7 @@ int main(int argc, char *argv[])
 	capture.release();
 
 	cv::destroyWindow("Webcam");
-	cv::destroyWindow("FrameDifference");
+	cv::destroyWindow("FrameDiff");
 
 	bkframe.release();
 	reference_frame.release();
